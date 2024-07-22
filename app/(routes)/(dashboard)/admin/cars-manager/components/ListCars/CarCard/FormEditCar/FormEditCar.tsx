@@ -55,7 +55,18 @@ export default function FormEditCar(props: FormEditCarProps) {
   const { isValid } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log("object");
+    setOpenDialog(false);
+    try {
+      await axios.patch(`/api/car/${carData.id}/form`, values);
+      toast({ title: "Car Edited ✌🏻" });
+      router.refresh();
+    } catch (error) {
+      console.log("error edit", error);
+      toast({
+        title: "Something went wrong",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -235,7 +246,7 @@ export default function FormEditCar(props: FormEditCarProps) {
           />
         </div>
         <Button className="w-full mt-5" type="submit" disabled={!isValid}>
-          Create Car
+          Edit Car
         </Button>
       </form>
     </Form>
