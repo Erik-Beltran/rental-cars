@@ -16,10 +16,10 @@ datasource db {
 
 model Car {
   id           String   @id @default(uuid())
-  userID       String
+  userId       String
   name         String   @db.Text
   cv           String   @db.Text
-  trasnmission String   @db.Text
+  transmission String   @db.Text
   people       String   @db.Text
   photo        String   @db.Text
   price        String   @db.Text
