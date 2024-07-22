@@ -7,7 +7,6 @@ export function SidebarItem(props: SidebarItemProps) {
   const { item } = props;
   const { href, icon: Icon, label } = item;
   const pathName = usePathname();
-  console.log("pathName", pathName);
   const activePath = pathName === href;
   return (
     <Link

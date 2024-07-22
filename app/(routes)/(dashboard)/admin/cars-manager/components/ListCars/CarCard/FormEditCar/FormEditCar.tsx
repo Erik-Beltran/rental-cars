@@ -23,52 +23,40 @@ import {
 } from "@/components/ui/select";
 
 import { Input } from "@/components/ui/input";
-import { formSchema } from "./FormAddCar.form";
 import { z } from "zod";
 import { UploadButton } from "@/src/utils/uploadthing";
 import { useState } from "react";
-import { FormAddCarProps } from "./FormAddCar.types";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { FormEditCarProps } from "./FormEditCar.types";
+import { formSchema } from "./FormEditCar.form";
 
-export default function FormAddCar(props: FormAddCarProps) {
-  const { setOpenDialog } = props;
+export default function FormEditCar(props: FormEditCarProps) {
+  const { carData, setOpenDialog } = props;
+
   const [photoUploaded, setPhotoUploaded] = useState(false);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      cv: "",
-      transmission: "",
-      people: "",
-      engine: "",
-      isPublish: false,
-      photo: "",
-      price: "",
-      type: "",
+      name: carData.name,
+      cv: carData.cv,
+      transmission: carData.transmission,
+      people: carData.people,
+      engine: carData.engine,
+      isPublish: carData.isPublish ?? false,
+      photo: carData.photo,
+      price: carData.price,
+      type: carData.type,
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-    setOpenDialog(false);
-    try {
-      await axios.post("/api/car", values);
-      toast({
-        title: "Car created ✅",
-      });
-      router.refresh();
-    } catch (error) {
-      toast({
-        title: "Something went wrong",
-        variant: "destructive",
-      });
-    }
-  };
-
   const { isValid } = form.formState;
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log("object");
+  };
 
   return (
     <Form {...form}>
@@ -79,7 +67,7 @@ export default function FormAddCar(props: FormAddCarProps) {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Car Name</FormLabel>
+                <FormLabel> Car Name </FormLabel>
                 <FormControl>
                   <Input placeholder="Tesla Model S Plaid" {...field} />
                 </FormControl>
