@@ -7,6 +7,10 @@ export const dataGeneralSidebar = [
 ];
 
 export const dataAdminSidebar = [
-  { icon: KeySquare, label: "Magnage your cars", href: "/admin/cars-manager" },
+  {
+    icon: KeySquare,
+    label: "Magnage your cars",
+    href: "/dashboard/admin/cars-manager",
+  },
   { icon: Calendar, label: "All Reserves", href: "/all-reserves" },
 ];
