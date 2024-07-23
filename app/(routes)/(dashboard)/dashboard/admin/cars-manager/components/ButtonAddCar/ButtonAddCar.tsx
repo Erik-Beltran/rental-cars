@@ -1,4 +1,5 @@
 "use client";
+import FormCar from "@/components/common/FormCar/FormCar";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -11,10 +12,39 @@ import {
 
 import { PlusCircle } from "lucide-react";
 import { useState } from "react";
-import FormAddCar from "../FormAddCar/FormAddCar";
+import { Interface } from "readline";
+
+type CarData = {
+  name: string;
+  cv: string;
+  transmission: string;
+  people: string;
+  photo: string;
+  engine: string;
+  type: string;
+  price: string;
+  isPublish: boolean;
+  id: string;
+  userId: string;
+};
+
+const carData: CarData = {
+  name: "",
+  cv: "",
+  transmission: "",
+  people: "",
+  photo: "",
+  engine: "",
+  type: "",
+  price: "",
+  isPublish: false,
+  id: "",
+  userId: "",
+};
 
 export function ButtonAddCar() {
   const [openDialog, setOpenDialog] = useState(false);
+  console.log("carData", carData);
 
   return (
     <Dialog open={openDialog} onOpenChange={() => setOpenDialog(!openDialog)}>
@@ -27,7 +57,7 @@ export function ButtonAddCar() {
       <DialogContent>
         <DialogHeader>
           <DialogDescription>
-            <FormAddCar setOpenDialog={setOpenDialog} />
+            <FormCar setOpenDialog={setOpenDialog} buttonLabel="Create Car" />
           </DialogDescription>
         </DialogHeader>
       </DialogContent>

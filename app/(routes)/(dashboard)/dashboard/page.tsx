@@ -1,6 +1,8 @@
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import ListCars from "./components/ListCars/ListCars";
+import { CarCard } from "@/components/common/CarCard";
 
 export default async function DashboardPage() {
   const { userId } = auth();
@@ -17,15 +19,13 @@ export default async function DashboardPage() {
       createAt: "desc",
     },
   });
-
-  console.log("cars", cars);
-
+  console.log("namecars", cars);
   return (
     <div>
       <div className="flex justify-between">
-        <h2 className="text-2xl font-bold">Car List</h2>
+        <h2 className="text-2xl font-bold">List of Cars</h2>
       </div>
-      
+      <ListCars cars={cars} />
     </div>
   );
 }

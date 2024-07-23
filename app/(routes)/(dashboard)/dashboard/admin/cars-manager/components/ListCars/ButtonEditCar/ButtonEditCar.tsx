@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 
 import { ButtonEditCarProps } from "./ButtonEdit.types";
 import { Pencil } from "lucide-react";
-import FormEditCar from "../FormEditCar/FormEditCar";
+import FormCar from "@/components/common/FormCar/FormCar";
 
 export function ButtonEdit(props: ButtonEditCarProps) {
   const { carData } = props;
@@ -29,7 +29,12 @@ export function ButtonEdit(props: ButtonEditCarProps) {
       <DialogContent>
         <DialogHeader>
           <DialogDescription>
-            <FormEditCar setOpenDialog={setOpenDialog} carData={carData} />
+            <FormCar
+              carData={carData}
+              setOpenDialog={setOpenDialog}
+              buttonLabel="Edit Car"
+              editMode
+            />
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
