@@ -11,7 +11,6 @@ export async function PATCH(
     const { userId } = auth();
     const { carId } = params;
     const { isPublish } = await req.json();
-    console.log("isPublish", isPublish);
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });

@@ -3,6 +3,7 @@ import { ButtonAddCar } from "./components/ButtonAddCar";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { ListCars } from "./components/ListCars";
+import Loading from "@/components/common/Loading/Loading";
 
 export default async function CarsManagerPage() {
   const { userId } = auth();

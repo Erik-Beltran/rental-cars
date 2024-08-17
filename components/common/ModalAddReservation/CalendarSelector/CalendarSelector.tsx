@@ -18,7 +18,6 @@ import { cn } from "@/lib/utils";
 
 export default function CalendarSelector(props: CalendarSelectorProps) {
   const { setDateSelected, className, carPriceDay } = props;
-  const [dateTest, setDateTest] = React.useState<Date | undefined>(new Date());
 
   const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(),

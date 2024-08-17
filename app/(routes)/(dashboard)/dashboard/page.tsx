@@ -19,7 +19,6 @@ export default async function DashboardPage() {
       createAt: "desc",
     },
   });
-  console.log("namecars", cars);
   return (
     <div>
       <div className="flex justify-between">

@@ -24,9 +24,9 @@ export function CarCard(props: CarCardProps) {
         <Image
           src={car.photo}
           alt={car.name}
-          width={500}
-          height={500}
-          className="rounded-b-lg w-full"
+          width={400}
+          height={600}
+          className={`${showStatus ? "rounded-b-lg" : "rounded-lg"} w-full`}
         />
       </div>
 

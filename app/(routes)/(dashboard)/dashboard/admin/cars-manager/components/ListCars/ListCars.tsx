@@ -3,24 +3,32 @@
 import { CarCard } from "@/components/common/CarCard";
 import { ListCarsProps } from "./ListCars.types";
 import { Button } from "@/components/ui/button";
-import { Trash, Upload } from "lucide-react";
+import { Flag, Trash, Upload } from "lucide-react";
 import axios from "axios";
 import { toast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { ButtonEdit } from "./ButtonEditCar";
+import Loading from "@/components/common/Loading/Loading";
+import { useState } from "react";
 
 export function ListCars(props: ListCarsProps) {
   const { cars } = props;
   const router = useRouter();
 
+  const [showLoading, setShowloading] = useState(false);
+
   const deleteCar = async (carId: string) => {
+    setShowloading(true);
     try {
       await axios.delete(`/api/car/${carId}`);
+      setShowloading(false);
+
       toast({
         title: "Car deleted ❌",
       });
       router.refresh();
     } catch (error) {
+      setShowloading(false);
       toast({
         title: "Somethig went wrong",
         variant: "destructive",
@@ -29,9 +37,10 @@ export function ListCars(props: ListCarsProps) {
   };
 
   const handlerPublishCar = async (carId: string, publish: boolean) => {
+    setShowloading(true);
     try {
       await axios.patch(`/api/car/${carId}`, { isPublish: publish });
-
+      setShowloading(false);
       if (publish) {
         toast({
           title: "Car Published ✌🏻",
@@ -41,8 +50,10 @@ export function ListCars(props: ListCarsProps) {
           title: "Car Unpublished ⚠️",
         });
       }
+
       router.refresh();
     } catch (error) {
+      setShowloading(false);
       toast({
         title: "Somethig went wrong",
         variant: "destructive",
@@ -81,6 +92,7 @@ export function ListCars(props: ListCarsProps) {
           )}
         </CarCard>
       ))}
+      <Loading showLoading={showLoading} />
     </div>
   );
 }

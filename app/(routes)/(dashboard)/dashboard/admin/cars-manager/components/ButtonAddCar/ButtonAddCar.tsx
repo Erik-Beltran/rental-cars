@@ -44,7 +44,6 @@ const carData: CarData = {
 
 export function ButtonAddCar() {
   const [openDialog, setOpenDialog] = useState(false);
-  console.log("carData", carData);
 
   return (
     <Dialog open={openDialog} onOpenChange={() => setOpenDialog(!openDialog)}>
