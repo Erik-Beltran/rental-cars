@@ -9,7 +9,7 @@ export const dataGeneralSidebar = [
 export const dataAdminSidebar = [
   {
     icon: KeySquare,
-    label: "Magnage your cars",
+    label: "Manage your cars",
     href: "/dashboard/admin/cars-manager",
   },
   {
