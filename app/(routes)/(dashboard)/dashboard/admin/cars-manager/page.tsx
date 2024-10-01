@@ -24,10 +24,14 @@ export default async function CarsManagerPage() {
   return (
     <div>
       <div className="flex justify-between">
-        <h2 className="text-2xl font-bold">Magane your cars</h2>
+        <h2 className="text-2xl font-bold">Manage your cars</h2>
         <ButtonAddCar />
       </div>
-      <ListCars cars={cars} />
+      {cars.length === 0 ? (
+        <h2>You have not yet created vehicles</h2>
+      ) : (
+        <ListCars cars={cars} />
+      )}
     </div>
   );
 }
