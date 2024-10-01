@@ -15,7 +15,7 @@ export default function ListLoveCars() {
       ) : (
         <div className="grid grid-cols-1 gap-6 my-4 md:grid-cols-2 lg:grid-cols-4">
           {lovedItems.map((car) => (
-            <CarCard car={car}>
+            <CarCard car={car} key={car.id}>
               <div className="flex items-center gap-x-3">
                 <ModalAddReservation car={car} />
                 <Heart
