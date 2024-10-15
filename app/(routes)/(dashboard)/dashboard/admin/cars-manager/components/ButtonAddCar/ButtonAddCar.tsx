@@ -53,7 +53,7 @@ export function ButtonAddCar() {
           <PlusCircle className="ml-2" />
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="overflow-y-scroll h-screen">
         <DialogHeader>
           <DialogDescription>
             <FormCar setOpenDialog={setOpenDialog} buttonLabel="Create Car" />
