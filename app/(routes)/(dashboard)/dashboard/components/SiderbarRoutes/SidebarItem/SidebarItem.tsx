@@ -5,9 +5,10 @@ import { usePathname } from "next/navigation";
 
 export function SidebarItem(props: SidebarItemProps) {
   const { item } = props;
-  const { href, icon: Icon, label } = item;
+  const { href = "/", icon: Icon, label } = item;
   const pathName = usePathname();
   const activePath = pathName === href;
+
   return (
     <Link
       href={href}

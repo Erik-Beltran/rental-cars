@@ -27,7 +27,7 @@ export const usedLovedCars = create(
           lovedItems: [...get().lovedItems, data],
         });
         toast({
-          title: "Coche added 🚘 ",
+          title: "Car added 🚘 ",
         });
       },
 
@@ -36,7 +36,7 @@ export const usedLovedCars = create(
           lovedItems: [...get().lovedItems.filter((item) => item.id !== id)],
         });
         toast({
-          title: "Coche removed",
+          title: "Car removed",
         });
       },
     }),
